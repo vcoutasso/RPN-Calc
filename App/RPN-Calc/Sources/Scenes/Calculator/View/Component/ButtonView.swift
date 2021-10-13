@@ -8,14 +8,17 @@
 import SwiftUI
 
 struct ButtonView: View {
+
+    let engine: Engine
     let button: CalculatorButton
 
     var body: some View {
         Button {
+            engine.getInput(from: button)
         } label: {
             Text(button.name.rawValue)
-//                .font(.largeTitle)
-                .font(.system(size: LayoutMetrics.buttonFontSize))
+                .font(.largeTitle)
+//                .font(.system(size: LayoutMetrics.buttonFontSize))
                 .fontWeight(.medium)
                 .frame(width: buttonWidth(), height: (UIScreen.main.bounds.width - 5*12)/4, alignment: .center)
                 .foregroundColor(.white)
@@ -45,6 +48,6 @@ struct ButtonView: View {
 
 struct ButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        ButtonView(button: .init(name: .one))
+        ButtonView(engine: Engine(), button: .init(name: .one))
     }
 }

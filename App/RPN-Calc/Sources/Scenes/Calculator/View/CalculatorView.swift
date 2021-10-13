@@ -19,6 +19,8 @@ struct CalculatorView: View {
 
     let buttons: [[CalculatorButton]] = buttonNames.map { $0.map { .init(name: $0) } }
 
+    @ObservedObject var engine: Engine = .init()
+
     var body: some View {
         ZStack {
             backgroundView
@@ -45,7 +47,7 @@ struct CalculatorView: View {
             HStack {
                 Spacer()
 
-                Text("0")
+                Text(engine.yRegister.displayValue)
                     .font(.largeTitle)
                     .foregroundColor(.white)
 
@@ -54,7 +56,7 @@ struct CalculatorView: View {
             HStack {
                 Spacer()
 
-                Text("0")
+                Text(engine.xRegister.displayValue)
                     .font(.largeTitle)
                     .foregroundColor(.white)
 
@@ -66,7 +68,7 @@ struct CalculatorView: View {
         ForEach(self.buttons, id: \.self) { row in
             HStack(spacing: LayoutMetrics.spacing) {
                 ForEach(row, id: \.self) { button in
-                    ButtonView(button: button)
+                    ButtonView(engine: engine, button: button)
                 }
             }
         }.padding(.bottom)
