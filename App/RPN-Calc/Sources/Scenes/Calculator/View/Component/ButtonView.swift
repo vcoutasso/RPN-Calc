@@ -13,25 +13,31 @@ struct ButtonView: View {
     var body: some View {
         Button {
         } label: {
-            Text(button.label.rawValue)
-                .font(.largeTitle)
+            Text(button.name.rawValue)
+//                .font(.largeTitle)
+                .font(.system(size: LayoutMetrics.buttonFontSize))
                 .fontWeight(.medium)
+                .frame(width: buttonWidth(), height: (UIScreen.main.bounds.width - 5*12)/4, alignment: .center)
+                .foregroundColor(.white)
+                .background(backgroundColor())
+                .cornerRadius(buttonWidth())
         }
-        .frame(width: button.style == .small ? LayoutMetrics.smallButtonWidth : LayoutMetrics.largeButtonWidth,
-               height: LayoutMetrics.smallButtonHeight)
-        .padding()
-        .foregroundColor(.white)
-        .background(button.type  == .numeric ? .black : button.type == .operation ? .orange : .gray)
-        .cornerRadius(LayoutMetrics.smallButtonWidth)
+    }
 
+    // MARK: - Private functions
+
+    private func backgroundColor() -> Color {
+        button.type  == .numeric ? Color(UIColor.darkGray) : button.type == .operation ? .orange : .gray
+    }
+
+    private func buttonWidth() -> CGFloat {
+        button.style == .large ? (UIScreen.main.bounds.width - 4*12)/4*2 + 4 : (UIScreen.main.bounds.width - 5*12)/4
     }
 
     // MARK: - Layout Metrics
 
     private enum LayoutMetrics {
-        static let smallButtonWidth: CGFloat = 30
-        static let smallButtonHeight: CGFloat = smallButtonWidth
-        static let largeButtonWidth: CGFloat = 2 * smallButtonWidth
+        static let buttonFontSize: CGFloat = 32
     }
 }
 
@@ -39,6 +45,6 @@ struct ButtonView: View {
 
 struct ButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        ButtonView(button: .init(style: .small, type: .operation, label: .one))
+        ButtonView(button: .init(name: .one))
     }
 }
