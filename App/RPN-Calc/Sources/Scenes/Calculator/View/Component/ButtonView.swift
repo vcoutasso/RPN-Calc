@@ -16,7 +16,7 @@ struct ButtonView: View {
         Button {
             engine.getInput(from: button)
         } label: {
-            Text(button.name.rawValue)
+            Text(button.label)
                 .font(.largeTitle)
 //                .font(.system(size: LayoutMetrics.buttonFontSize))
                 .fontWeight(.medium)

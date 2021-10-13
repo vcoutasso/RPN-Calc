@@ -4,3 +4,25 @@
 
   Created by Vinícius Couto on 13/10/21.
 */
+
+"button.numeric.zero" = "0";
+"button.numeric.one" = "1";
+"button.numeric.two" = "2";
+"button.numeric.three" = "3";
+"button.numeric.four" = "4";
+"button.numeric.five" = "5";
+"button.numeric.six" = "6";
+"button.numeric.seven" = "7";
+"button.numeric.eight" = "8";
+"button.numeric.nine" = "9";
+
+"button.operation.division" = "÷";
+"button.operation.multiplication" = "✕";
+"button.operation.minus" = "−";
+"button.operation.plus" = "+";
+
+"button.misc.plusMinus" = "+/-";
+"button.misc.dot" = ".";
+"button.misc.clear" = "C";
+"button.misc.delete" = "←";
+"button.misc.enter" = "ENTER";

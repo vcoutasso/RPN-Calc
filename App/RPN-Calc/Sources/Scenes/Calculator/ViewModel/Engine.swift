@@ -16,9 +16,9 @@ class Engine: ObservableObject {
     func getInput(from button: CalculatorButton) {
         switch button.type {
         case .numeric:
-            handleNumberPressed(number: button.name.rawValue)
+            handleNumberPressed(number: button.label)
         case .operation:
-            handleOperationPressed(operation: button.name.rawValue)
+            handleOperationPressed(operation: button.label)
         case .misc:
             if button.name == .enter {
                 handleEnterPressed()
@@ -28,7 +28,7 @@ class Engine: ObservableObject {
                 handleClearPressed()
             } else if button.name == .dot {
                 handleDotPressed()
-            } else if button.name == .plutsMinus {
+            } else if button.name == .plusMinus {
                 handlePlusMinusPressed()
             }
         }
@@ -59,16 +59,16 @@ class Engine: ObservableObject {
     func handleOperationPressed(operation: String) {
         if let yValue = yRegister.numericValue, let xValue = xRegister.numericValue {
             switch operation {
-            case "−":
+            case Strings.Button.Operation.minus:
                 let result = yValue - xValue
                 xRegister.setValue(newValue: String(result))
-            case "+":
+            case Strings.Button.Operation.plus:
                 let result = yValue + xValue
                 xRegister.setValue(newValue: String(result))
-            case "÷":
+            case Strings.Button.Operation.division:
                 let result = yValue / xValue
                 xRegister.setValue(newValue: String(result))
-            case "✕":
+            case Strings.Button.Operation.multiplication:
                 let result = yValue * xValue
                 xRegister.setValue(newValue: String(result))
             default:
@@ -86,15 +86,15 @@ class Engine: ObservableObject {
     }
 
     func handleDotPressed() {
-        if !xRegister.displayValue.contains(".") {
-            xRegister.appendDigit(newDigit: ".")
+        if !xRegister.displayValue.contains(Strings.Button.Misc.dot) {
+            xRegister.appendDigit(newDigit: Strings.Button.Misc.dot)
         }
     }
 
     // MARK: - Register
 
     struct Register: Identifiable, Hashable {
-        static let defaultValue: String = "0"
+        static let defaultValue: String = Strings.Button.Numeric.zero
 
         var id: UUID = .init()
         fileprivate(set) var displayValue: String = defaultValue

@@ -10,7 +10,7 @@ import SwiftUI
 struct CalculatorView: View {
 
     private static let buttonNames: [[ButtonName]] = [
-        [.enter, .plutsMinus, .delete],
+        [.enter, .plusMinus, .delete],
         [.seven, .eight, .nine, .division],
         [.four, .five, .six, .multiplication],
         [.one, .two, .three, .minus],

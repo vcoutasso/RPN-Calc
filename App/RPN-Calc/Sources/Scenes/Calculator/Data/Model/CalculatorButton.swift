@@ -24,10 +24,53 @@ struct CalculatorButton: Identifiable, Hashable {
         switch self.name {
         case .division, .multiplication, .minus, .plus:
             return .operation
-        case .plutsMinus, .dot, .clear, .delete, .enter:
+        case .plusMinus, .dot, .clear, .delete, .enter:
             return .misc
         default:
             return .numeric
+        }
+    }
+
+    var label: String {
+        switch name {
+        case .zero:
+            return Strings.Button.Numeric.zero
+        case .one:
+            return Strings.Button.Numeric.one
+        case .two:
+            return Strings.Button.Numeric.two
+        case .three:
+            return Strings.Button.Numeric.three
+        case .four:
+            return Strings.Button.Numeric.four
+        case .five:
+            return Strings.Button.Numeric.five
+        case .six:
+            return Strings.Button.Numeric.six
+        case .seven:
+            return Strings.Button.Numeric.seven
+        case .eight:
+            return Strings.Button.Numeric.eight
+        case .nine:
+            return Strings.Button.Numeric.nine
+        case .division:
+            return Strings.Button.Operation.division
+        case .multiplication:
+            return Strings.Button.Operation.multiplication
+        case .minus:
+            return Strings.Button.Operation.minus
+        case .plus:
+            return Strings.Button.Operation.plus
+        case .plusMinus:
+            return Strings.Button.Misc.plusMinus
+        case .dot:
+            return Strings.Button.Misc.dot
+        case .clear:
+            return Strings.Button.Misc.clear
+        case .delete:
+            return Strings.Button.Misc.delete
+        case .enter:
+            return Strings.Button.Misc.enter
         }
     }
 }
@@ -43,25 +86,24 @@ enum ButtonType {
     case misc
 }
 
-enum ButtonName: String {
-    case zero = "0"
-    case one = "1"
-    case two = "2"
-    case three = "3"
-    case four = "4"
-    case five = "5"
-    case six = "6"
-    case seven = "7"
-    case eight = "8"
-    case nine = "9"
-    case division = "÷"
-    case multiplication = "✕"
-    case minus = "−"
-    case plus = "+"
-    case plutsMinus = "+/-"
-    case dot = "."
-    case clear = "C"
-    case delete = "←"
-    case enter = "ENTER"
-
+enum ButtonName {
+    case zero
+    case one
+    case two
+    case three
+    case four
+    case five
+    case six
+    case seven
+    case eight
+    case nine
+    case division
+    case multiplication
+    case minus
+    case plus
+    case plusMinus
+    case dot
+    case clear
+    case delete
+    case enter
 }
